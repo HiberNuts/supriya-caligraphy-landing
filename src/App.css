@@ -7,6 +7,11 @@
   margin: 0;
 }
 
+html {
+  overflow: -moz-scrollbars-none;
+  scrollbar-width: none;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -21,4 +26,32 @@ input {
   width: 95%;
   margin: 0 auto;
   padding: 1rem 0;
+}
+.logo{
+  background: linear-gradient(to left, red, violet);
+  transform-origin: top left;
+  transform: scale(0,0);
+  opacity: 0;
+}
+
+#progressBarContainer {
+  position: fixed;
+  z-index: 100;
+  background: rgba(255,255,255,0.05);
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+
+#progressBar {
+  background: linear-gradient(to left, red, violet);
+  transform-origin: top left;
+  transform: scale(0,0);
+  opacity: 0;
+}
+
+#progressBarContainer,
+#progressBar {
+  height: 10px;
 }

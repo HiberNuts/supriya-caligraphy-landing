@@ -7,7 +7,7 @@ const BlogItem = ({
   blog: { description, title, createdAt, authorName, authorAvatar, cover, category, id, postLink },
 }) => {
   return (
-    <div className="blogItem-wrap">
+    <div className="blogItem-wrap animate__animated animate__flipInY">
       <a href={postLink} target="_blank">
         <img className="blogItem-cover" src={cover} alt="cover" />
       </a>
