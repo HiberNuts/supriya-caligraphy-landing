@@ -1,0 +1,44 @@
+.heading-line {
+    /* ... */
+  
+    /* set the color of the text to transparent */
+    color: transparent;
+  
+    /* we need to clip the gradient background so that
+    so only the text bit will have the gradient background
+    (otherwise the entire rectangle the text is in would have it) */
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  .heading-line-first {
+    background-image: linear-gradient(to left, #ed8936, #ed64a6);
+  }
+  
+  .heading-line-second {
+    background-image: linear-gradient(to left, #38b2ac, #0bc5ea);
+  }
+  
+  .heading-line-third {
+    background-image: linear-gradient(to left, #ecc94b, #48bb78);
+  }
+
+  a{
+    /* text-decoration: none; */
+    border-bottom: 1px solid linear-gradient(to left, #38b2ac, #0bc5ea);;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 50px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.03em;
+  }
+
+  .heading-line {
+    line-height: 1;
+    display: block;
+    position: relative;
+    text-align: center;
+  }
