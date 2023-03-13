@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EmptyList from "../../components/common/EmptyList";
 import BlogList from "../../components/Home/BlogList";
 import Header from "../../components/Home/Header";
 import SearchBar from "../../components/Home/SearchBar";
 import { blogList } from "../../config/data";
+import imageUrlBuilder from "@sanity/image-url";
+import sanityClient from "../../client";
 import "./index.css";
-const Home = () => {
-  const [blogs, setBlogs] = useState(blogList);
-  const [searchKey, setSearchKey] = useState("");
 
+const builder = imageUrlBuilder(sanityClient);
+
+const Home = () => {
+  const [blogs, setBlogs] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
   // Search submit
   const handleSearchBar = (e) => {
     e.preventDefault();
     handleSearchResults();
   };
+
+  function urlFor(source) {
+    return builder.image(source);
+  }
 
   // Search for blog by category
   const handleSearchResults = () => {
@@ -28,6 +36,23 @@ const Home = () => {
     setSearchKey("");
   };
 
+  useEffect(() => {
+    sanityClient
+      .fetch(
+        `*[_type == "post"]{
+      title,
+      category,
+      subCategory,
+      mainImage,
+      description,
+      createdAt,
+      postLink
+    }`
+      )
+      .then((data) => setBlogs(data))
+      .catch(console.error);
+  }, []);
+  console.log(blogs);
   return (
     <div>
       {/* Page Header */}
